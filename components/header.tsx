@@ -1,9 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import React from 'react'
-import { ThemeProvider } from './theme-provider'
 import { ThemeToggleButton } from './ThemeToggleButton'
 
 const menuItems = [
