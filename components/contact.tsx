@@ -32,7 +32,7 @@ export default function ContactSection() {
                         </CardDecorator>
 
                         <h3 className="mt-0 font-medium">
-                            <p href="mailto:angelivaldezrivera@gmail.com" target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
+                            <p className='hover:text-primary'>
                                 angelivaldezrivera@gmail.com
                             </p>
                         </h3>
