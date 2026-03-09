@@ -52,7 +52,7 @@ export default function HeroSection() {
                                 <div className="overflow-hidden rounded-full  shadow-lg mask-x-from-90% mask-x-to-100%">
                                     <Image
                                         className="aspect-square w-full object-cover"
-                                        src="/Me/profile"
+                                        src="/Me/profile.JPG"
                                         alt="My profile picture"
                                         width={200}
                                         height={200}
