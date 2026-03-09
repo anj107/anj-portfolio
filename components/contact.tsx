@@ -50,7 +50,7 @@ export default function ContactSection() {
                         </CardDecorator>
 
                         <h3 className="mt-0 font-medium">
-                            <p target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
+                            <p className='hover:text-primary'>
                                 0928 594 5800
                             </p>
                         </h3>
