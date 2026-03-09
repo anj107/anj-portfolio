@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import React from 'react'
 import { ThemeToggleButton } from './ThemeToggleButton'
+import { Logo } from './logo'
+
 
 const menuItems = [
     { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About Me', href: '/#about' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'Contact', href: '/#contact' },
 ]
 export default function HeroHeader() {
     const [menuState, setMenuState] = React.useState(false)
@@ -25,6 +28,7 @@ export default function HeroHeader() {
                                     href="/"
                                     aria-label="home"
                                     className="flex items-center space-x-2">
+                                    <Logo />
                                 </Link>
 
                                 <button
@@ -43,6 +47,7 @@ export default function HeroHeader() {
                                             <li key={index}>
                                                 <Link
                                                     href={item.href}
+                                                    onClick={() => setMenuState(false)}
                                                     className="text-muted-foreground hover:text-accent-foreground block duration-150">
                                                     <span>{item.name}</span>
                                                 </Link>

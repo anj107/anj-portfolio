@@ -1,8 +1,13 @@
 
 import { InfiniteSlider } from '@/components/motion-primitives/infinite-slider'
 import { ProgressiveBlur } from '@/components/motion-primitives/progressive-blur'
+import { InView } from '@/components/ui/in-view';
 import Image from 'next/image';
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 const techLogos = [
   { name: 'Python', src: '/Techstack/python.png', width: 160, height: 80 },
@@ -17,43 +22,50 @@ const techLogos = [
 
 export default function TechLogo() {
     return (
-        <section className="bg-background border-t pb-16 pt-24 lg:py-10">
-                    <div className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-16">
-                        <div className="flex flex-col items-center gap-6 md:flex-row">
-                            <div className="md:max-w-44 md:border-r md:pr-2">
-                                <p className="text-4xl font-semibold lg:text-2xl"><strong>Technical Stack</strong></p>
+        <InView
+            variants={{
+              hidden: { opacity: 0, y: 100, filter: 'blur(4px)' },
+              visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+            }}
+            viewOptions={{ margin: '0px 0px -200px 0px' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
+            <section className=" mask-y-from-80% mask-y-to-100% pb-16 pt-24 lg:py-10">
+                <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
+                    <div className="relative">
+                           <h1 className="text-center text-4xl font-bold lg:text-5xl">Tech Stack</h1>
+                            <p className="mt-4 text-center">Prgramming languages & Tools I have used. </p>
+                    </div>
+                    <div className="flex flex-col items-center gap-6 md:flex-row">
+                        <div className="relative isolate w-full justify-center overflow-hidden py-2 md:w-[calc(100%-5rem)]">
+                            <InfiniteSlider speedOnHover={20} speed={40} gap={75}>
+                                {techLogos.map((logo) => (
+                                <div
+                                    key={logo.name}
+                                    className="mx-1 flex h-30 items-center justify-center rounded-md  px-2 py-2"
+                                >
+                                    <Image
+                                    src={logo.src}
+                                    alt={logo.name}
+                                    width={logo.width}
+                                    height={logo.height}
+                                    className="h-30 w-auto object-contain md:h-30 lg:h-30"
+                                />
                             </div>
-                                <div className="relative w-full py-8 md:w-[calc(100%-16rem)]">
-                                <InfiniteSlider speedOnHover={20} speed={40} gap={75}>
-                                    {techLogos.map((logo) => (
-                                    <div
-                                        key={logo.name}
-                                        className="mx-1 flex h-20 items-center justify-center rounded-md border border-border bg-secondary px-2 py-2"
-                                    >
-                                        <Image
-                                        src={logo.src}
-                                        alt={logo.name}
-                                        width={logo.width}
-                                        height={logo.height}
-                                        className="h-10 w-auto object-contain md:h-12 lg:h-14"
-                                    />
-                                </div>
-                                ))}
-                                </InfiniteSlider>
-
-                                <div aria-hidden className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"/>
-                                <div aria-hidden className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"/>
-                                <ProgressiveBlur className="pointer-events-none absolute left-0 top-0 h-full w-20"
-                                    direction="left"
-                                    blurIntensity={1}
-                                />
-                                <ProgressiveBlur className="pointer-events-none absolute right-0 top-0 h-full w-20"
-                                    direction="right"
-                                    blurIntensity={1}
-                                />
-                                </div>
+                            ))}
+                            </InfiniteSlider>
+                            <ProgressiveBlur className="pointer-events-none absolute left-0 top-0 h-full w-10"
+                                direction="left"
+                                blurIntensity={1}
+                            />
+                            <ProgressiveBlur className="pointer-events-none absolute right-0 top-0 h-full w-10"
+                                direction="right"
+                                blurIntensity={1}
+                            />
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
+        </InView>
     )
 }
