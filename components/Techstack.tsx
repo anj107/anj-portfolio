@@ -30,7 +30,7 @@ export default function TechLogo() {
             viewOptions={{ margin: '0px 0px -200px 0px' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-            <section className=" mask-y-from-80% mask-y-to-100% pb-16 pt-24 lg:py-10">
+            <section className=" mask-y-from-80% mask-y-to-100% scroll-mt-24 border-t py-12 md:py-20 sm:py-24">
                 <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
                     <div className="relative">
                            <h1 className="text-center text-4xl font-bold lg:text-5xl">Tech Stack</h1>

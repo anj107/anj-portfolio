@@ -17,7 +17,7 @@ export default function HeroSection() {
         <>
         <HeroHeader />
             <main className="@container overflow-x-hidden">
-                <section className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-16 sm-24">
+                <section className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-10 sm-24">
                     <div className="pb-24 pt-12 md:pb-32 lg:pb-56 lg:pt-44">
                         <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
                             <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
@@ -49,7 +49,7 @@ export default function HeroSection() {
                                 transition={{ duration: 0.6, ease: 'easeOut' }}
                                 className="lg:w-120 @max-lg:-translate-x-20 max-lg:size-120 max-lg:order-first max-lg:mx-auto max-lg:-mb-20 lg:absolute lg:top-[-100px] lg:right-2"
                             >
-                                <div className="overflow-hidden rounded-full border-1 mask-x-from-80% mask-x-to-100%">
+                                <div className="overflow-hidden rounded-full  shadow-lg mask-x-from-90% mask-x-to-100%">
                                     <Image
                                         className="aspect-square w-full object-cover"
                                         src="/Me/profile"

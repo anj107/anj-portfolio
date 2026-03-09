@@ -203,7 +203,7 @@ export function ProjectSection() {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
                 <h1 className="text-center text-4xl font-bold lg:text-5xl">Projects</h1>
-                <p className="mt-4 text-center">Projects that are built. </p>
+                <p className="mt-4 text-center">Projects that are built during college. </p>
 
           <div className="pt-10 grid gap-10 md:grid-cols-2 animate-fade-right animate-once animate-delay-[3ms]">
             {projects.map((item) => (

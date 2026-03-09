@@ -3,12 +3,11 @@ import { Card, CardContent, CardHeader,CardDecorator } from '@/components/ui/car
 import { Mail, Facebook, Github, Linkedin, Phone } from 'lucide-react'
 import { ReactNode } from 'react'
 import { InView } from './ui/in-view'
-import { AnimatedGroup } from '@/components/motion-primitives/animated-group';
 
 
 export default function ContactSection() {
     return (
-        <section id="contact" className="scroll-mt-24 border-t py-12 md:py-20 sm:py-24">
+        <section id="contact" className="scroll-mt-24 py-12 md:py-10 sm:py-24">
         <InView
                     variants={{
                       hidden: { opacity: 0, y: 100, filter: 'blur(4px)' },
@@ -20,10 +19,10 @@ export default function ContactSection() {
 
             <div className="@container mx-auto max-w-5xl px-6 " >
                 <h1 className="text-center text-4xl font-semibold lg:text-5xl">Contact Me</h1>
-                <p className="mt-4 text-center">Let's get to know each other.</p>
-
-            <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid w-full max-w-6xl gap-6 *:text-center md:mt-16 md:grid-cols-2 lg:grid-cols-3">
-                      <Card className="group h-[150px] shadow-zinc-950/5">
+                <p className="mt-4 text-center">Let us get to know each other.<br/>Collaborations, project queries, or opportunities are all welcome.</p>
+            
+            <div className="@min-4xl:max-w-full @min-4xl:grid-cols-2 mx-auto mt-8 grid w-full max-w-6xl gap-6 *:text-center md:mt-16 md:grid-cols-1 lg:grid-cols-2">
+                <Card className="group h-[150px] shadow-zinc-950/5">
                           <CardHeader className="gap-2 pb-3">
                         <CardDecorator>
                             <Mail
@@ -33,9 +32,9 @@ export default function ContactSection() {
                         </CardDecorator>
 
                         <h3 className="mt-0 font-medium">
-                            <a href="mailto:angelivaldezrivera@gmail.com" target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
+                            <p href="mailto:angelivaldezrivera@gmail.com" target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
                                 angelivaldezrivera@gmail.com
-                            </a>
+                            </p>
                         </h3>
                     </CardHeader>
                 </Card>
@@ -51,12 +50,14 @@ export default function ContactSection() {
                         </CardDecorator>
 
                         <h3 className="mt-0 font-medium">
-                            <a href="tel:+639254883603" target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
-                                0925 488 3603
-                            </a>
+                            <p target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
+                                0928 594 5800
+                            </p>
                         </h3>
                     </CardHeader>
                 </Card>
+            </div>
+            <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid w-full max-w-6xl gap-6 *:text-center md:mt-5 md:grid-cols-2 lg:grid-cols-3">
 
                 <Card className="group h-[150px] shadow-zinc-950/5">
                     <CardHeader className="gap-2 pb-3">

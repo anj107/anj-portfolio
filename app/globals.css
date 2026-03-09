@@ -185,7 +185,7 @@
   --shadow-lg: 1px 2px 5px 1px hsl(0 0% 10.1961% / 0.08), 1px 4px 6px 0px hsl(0 0% 10.1961% / 0.08);
   --shadow-xl: 1px 2px 5px 1px hsl(0 0% 10.1961% / 0.08), 1px 8px 10px 0px hsl(0 0% 10.1961% / 0.08);
   --gradient-start: oklch(0.2166 0.0253 287.6061);
-  --gradient-end: oklch(0.4640 0.0532 291.1189);
+  --gradient-end: oklch(48.395% 0.06004 317.806);
   --grid-color: oklch(0.9298 0.0188 289.3149 / 0.15); 
 }
 

@@ -34,7 +34,7 @@ const timelineData = [
 
 export default function Education() {
     return (
-        <section id="about" className="py-12 md:py-20">
+        <section id="about" className="scroll-mt-24 border-t py-12 md:py-20 sm:py-24">
             <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
               <div>
                   <InView
