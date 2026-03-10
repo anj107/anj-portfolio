@@ -7,7 +7,7 @@ export default function GradientText({
   children,
   className = '',
   colors,
-  style,
+  style = undefined,
   animationSpeed = 8,
   showBorder = false,
   direction = 'horizontal',
