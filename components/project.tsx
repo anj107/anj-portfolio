@@ -152,7 +152,7 @@ function DetailDialogCard({ item, index }: { item: SectionItem; index: number })
     >
       <MorphingDialog>
         <Tilt rotationFactor={8} isRevese>
-          <Card className={cardClassName}>
+          <Card className="group h-full flex flex-col overflow-hidden border border-border/70 bg-card/90 pt-6 shadow-sm shadow-primary/5 transition-all duration-300 hover:border-primary/35 hover:shadow-lg hover:shadow-primary/15">
             <MorphingDialogImage
               src={item.coverImage}
               alt={item.title}

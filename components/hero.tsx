@@ -24,7 +24,7 @@ export default function HeroSection() {
                                         Hello, my name is Angeli
                                     </TextEffect>
                                     </h1>
-                                <p className="mt-8 max-w-2xl text-pretty text-lg animate-fade-up animate-ease-in">
+                                <p className="mt-8 max-w-2xl text-pretty text-lg animate-in fade-in slide-in-from-bottom-2 duration-700 ease-out">
                                     A BSIT student at <span className="text-accent-foreground font-bold">Polytechnic University of the Philippines</span>, aspiring to become a software developer to help innovate and create impactful solutions.
                                 </p>
 
