@@ -7,6 +7,7 @@ export default function GradientText({
   children,
   className = '',
   colors,
+  style,
   animationSpeed = 8,
   showBorder = false,
   direction = 'horizontal',
@@ -114,7 +115,7 @@ export default function GradientText({
       )}
       <motion.div
         className="inline-block relative z-2 text-transparent bg-clip-text"
-        style={{ ...gradientStyle, backgroundPosition, WebkitBackgroundClip: 'text' }}
+        style={{ ...gradientStyle, backgroundPosition, WebkitBackgroundClip: 'text', ...style }}
       >
         {children}
       </motion.div>

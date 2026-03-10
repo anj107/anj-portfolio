@@ -151,7 +151,7 @@ function DetailDialogCard({ item, index }: { item: SectionItem; index: number })
       className="h-full"
     >
       <MorphingDialog>
-        <Tilt rotationFactor={8} isRevese>
+        <Tilt className="h-full" rotationFactor={8} isRevese>
           <Card className="group h-full flex flex-col overflow-hidden border border-border/70 bg-card/90 pt-6 shadow-sm shadow-primary/5 transition-all duration-300 hover:border-primary/35 hover:shadow-lg hover:shadow-primary/15">
             <MorphingDialogImage
               src={item.coverImage}
@@ -243,7 +243,7 @@ export function ProjectSection() {
             </GradientText>
                 <p className="mt-4 text-center">Projects that are built during college. </p>
 
-          <div className="pt-10 grid gap-10 md:grid-cols-2">
+          <div className="pt-10 grid auto-rows-fr gap-10 md:grid-cols-2">
             {projects.map((item, index) => (
               <DetailDialogCard key={item.id} item={item} index={index} />
             ))}
@@ -268,7 +268,7 @@ export function ProjectSection() {
             >
                 Leadership
             </GradientText>
-            <div className="pt-10 grid gap-10 md:grid-cols-2">
+            <div className="pt-10 grid auto-rows-fr gap-10 md:grid-cols-2">
               {leadership.map((item, index) => (
                 <DetailDialogCard key={item.id} item={item} index={index} />
               ))}
