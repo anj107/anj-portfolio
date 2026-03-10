@@ -7,10 +7,8 @@ import Image from 'next/image';
 import HeroHeader from "@/components/header";
 import Socials from "@/components/socialmedia";
 import { TextEffect } from '@/components/motion-primitives/text-effect';
-import {Send, Eye} from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { motion } from 'motion/react';
-
-
 
 export default function HeroSection() {
         return (
@@ -21,16 +19,16 @@ export default function HeroSection() {
                     <div className="pb-24 pt-12 md:pb-32 lg:pb-56 lg:pt-44">
                         <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
                             <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
-                               <h1 className="mt-8 max-w-2xl text-balance text-6xl font-medium md:text-6xl lg:mt-16 xl:text-7xl">
+                               <h1 className="mt-8 max-w-2xl text-balance text-6xl font-bold md:text-6xl lg:mt-16 xl:text-7xl">
                                     <TextEffect preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3}>
                                         Hello, my name is Angeli
                                     </TextEffect>
                                     </h1>
-                                <p className="mt-8 max-w-2xl text-pretty text-lg">
+                                <p className="mt-8 max-w-2xl text-pretty text-lg animate-fade-up animate-ease-in">
                                     A BSIT student at <span className="text-accent-foreground font-bold">Polytechnic University of the Philippines</span>, aspiring to become a software developer to help innovate and create impactful solutions.
                                 </p>
 
-                                <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
+                                <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start animate-in fade-in slide-in-from-bottom-2 duration-700 ease-out">
                                     <Button
                                         asChild
                                         size="lg"
@@ -39,7 +37,7 @@ export default function HeroSection() {
                                             <span className="text-nowrap">View Resume</span><Eye className="size-5"/>
                                         </Link>
                                     </Button>
-                                    <div className= "pl-4 mt-2 flex flex-col items-center justify-center sm:flex-row lg:justify-start"><Socials/></div>
+                                    <div className= "pl-4 mt-2 flex flex-col items-center justify-center sm:flex-row lg:justify-start animate-in fade-in slide-in-from-bottom-2 duration-700 ease-out"><Socials/></div>
                                 </div>
                             </div>
                             <motion.div

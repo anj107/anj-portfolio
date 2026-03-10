@@ -4,6 +4,7 @@ import { ProgressiveBlur } from '@/components/motion-primitives/progressive-blur
 import { InView } from '@/components/ui/in-view';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import Image from 'next/image';
+import GradientText from '@/components/GradientText';
 
 const techLogos = [
   { name: 'Python', src: '/Techstack/python.png', width: 160, height: 80 },
@@ -26,11 +27,13 @@ export default function TechLogoSection() {
             viewOptions={{ margin: '0px 0px -200px 0px' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-            <section className="z-50 mask-y-from-80% mask-y-to-100% scroll-mt-24 py-12 md:py-20 sm:py-24">
+            <section className="z-50 mask-y-from-80% mask-y-to-100% scroll-mt-24 py-12 md:py-20 sm:py-24 ">
                 <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
                     <div className="relative">
-                           <h1 className="text-center text-4xl font-bold lg:text-5xl">Tech Stack</h1>
-                            <p className="mt-4 text-center">Programming Languages & Tools I have used. </p>
+                        <GradientText colors={["#5227FF","#9d659d", "#1b1235"]} animationSpeed={8.5} showBorder={false}className="custom-class text-center text-6xl font-extrabold lg:text-5xl" style={{ textShadow: "0 0 14px var(--ring)" }}>
+                        Tech Stack
+                        </GradientText>
+                        <p className="mt-4 text-center">Programming Languages & Tools I have used. </p>
                     </div>
                     <div className="flex flex-col items-center gap-6 md:flex-row">
                         <div className="relative isolate w-full justify-center overflow-hidden py-2 md:w-[calc(100%-5rem)]">

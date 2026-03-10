@@ -11,9 +11,9 @@ export function Background() {
           smallWidth={220}
           duration={8}
           xOffset={90}
-          gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(222, 100%, 66%, .16) 0, hsla(222, 100%, 56%, .08) 45%, hsla(222, 100%, 48%, 0) 80%)"
-          gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 76%, .12) 0, hsla(210, 100%, 60%, .05) 80%, transparent 100%)"
-          gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(195, 100%, 72%, .10) 0, hsla(195, 100%, 58%, .04) 80%, transparent 100%)"
+          gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, #528dff29 0, #1f70ff14 45%, #005cff00 80%)"
+          gradientSecond="radial-gradient(50% 50% at 50% 50%, #85c2ff1f 0, #3399ff0d 80%, transparent 100%)"
+          gradientThird="radial-gradient(50% 50% at 50% 50%, #70d8ff1a 0, #29c2ff0a 80%, transparent 100%)"
         />
       </div>
 
@@ -25,9 +25,9 @@ export function Background() {
           smallWidth={230}
           duration={8}
           xOffset={95}
-          gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(223, 100%, 65%, .18) 0, hsla(223, 100%, 55%, .10) 45%, hsla(223, 100%, 45%, 0) 80%)"
-          gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(212, 100%, 72%, .14) 0, hsla(212, 100%, 58%, .06) 80%, transparent 100%)"
-          gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(200, 100%, 70%, .12) 0, hsla(200, 100%, 56%, .05) 80%, transparent 100%)"
+          gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, #4d81ff2e 0, #1a63ff1a 45%, #0051e600 80%)"
+          gradientSecond="radial-gradient(50% 50% at 50% 50%, #70b9ff24 0, #2998ff0f 80%, transparent 100%)"
+          gradientThird="radial-gradient(50% 50% at 50% 50%, #66ccff1f 0, #1fadff0d 80%, transparent 100%)"
         />
       </div>
 

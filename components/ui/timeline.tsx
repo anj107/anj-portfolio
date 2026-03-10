@@ -106,7 +106,7 @@ const TimelineLogo = React.forwardRef<
     {...props}
   />
 ))
- .displayName = "TimelineLogo"
+TimelineLogo.displayName = "TimelineLogo"
 
 export {
   Timeline,

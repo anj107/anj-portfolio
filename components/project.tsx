@@ -1,11 +1,36 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import {Card,CardAction,CardContent,CardDescription,CardHeader,CardTitle,} from "@/components/ui/card";
-import {Carousel,CarouselContent,CarouselItem,CarouselNext,CarouselPrevious,} from "@/components/ui/carousel";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
-import {MorphingDialog,MorphingDialogClose,MorphingDialogContainer,MorphingDialogContent,MorphingDialogImage,MorphingDialogTrigger,} from "@/components/motion-primitives/morphing-dialog";
-import {CalendarDays} from 'lucide-react'
+import {
+  MorphingDialog,
+  MorphingDialogClose,
+  MorphingDialogContainer,
+  MorphingDialogContent,
+  MorphingDialogImage,
+  MorphingDialogTrigger,
+} from "@/components/motion-primitives/morphing-dialog";
+import { CalendarDays } from "lucide-react";
 import { InView } from "./ui/in-view";
 import { Tilt } from '@/components/motion-primitives/tilt';
+import GradientText from '@/components/GradientText';
+import { motion } from 'motion/react';
+
 
 type SectionItem = {
   id: number;
@@ -115,44 +140,53 @@ const leadership: SectionItem[] = [
   },
 ];
 
-function DetailDialogCard({ item }: { item: SectionItem }) {
+function DetailDialogCard({ item, index }: { item: SectionItem; index: number }) {
   return (
-    <MorphingDialog>
-      <Tilt rotationFactor={8} isRevese>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '0px 0px -120px 0px' }}
+      transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
+      whileHover={{ y: -4 }}
+      className="h-full"
+    >
+      <MorphingDialog>
+        <Tilt rotationFactor={8} isRevese>
+          <Card className={cardClassName}>
+            <MorphingDialogImage
+              src={item.coverImage}
+              alt={item.title}
+              className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
 
-      <Card className="h-full flex flex-col overflow-hidden hover-accent hover:shadow-lg transition-shadow pt-6 ">
-        <MorphingDialogImage
-          src={item.coverImage}
-          alt={item.title}
-          className="aspect-video w-full object-cover"
-        />
+            <CardHeader className="space-y-2">
+              <CardAction>
+                <Badge variant="secondary">
+                  {item.tag} | <CalendarDays />{item.time}
+                </Badge>
+              </CardAction>
+              <CardTitle className="text-base md:text-lg">{item.title}</CardTitle>
+              <CardDescription className="text-sm">{item.subtitle}</CardDescription>
+            </CardHeader>
 
-        <CardHeader className="space-y-2">
-          <CardAction>
-            <Badge variant="secondary">{item.tag} | <CalendarDays />{item.time}</Badge>
-          </CardAction>
-          <CardTitle className="text-base md:text-lg">{item.title}</CardTitle>
-          <CardDescription className="text-sm">{item.subtitle}</CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex-1 flex flex-col justify-between space-y-3">
-          <p className="text-sm text-muted-foreground">{item.summary}</p>
-          <div className="flex flex-wrap gap-2">
-            {item.techstack.map((techstack, index) => (
-              <Badge key={index} variant="outline">
-                {techstack}
-              </Badge>
-            ))}
-          </div>
-          <div className="border-t pt-4 flex justify-center">
-            <MorphingDialogTrigger>
-              <Button size="sm" variant="default" className="py-2 hover:bg-accent-foreground">
-                View details
-              </Button>
-            </MorphingDialogTrigger>
-          </div>
-        </CardContent>
-      </Card>
+            <CardContent className="flex-1 flex flex-col justify-between space-y-3">
+              <p className="text-sm text-muted-foreground">{item.summary}</p>
+              <div className="flex flex-wrap gap-2">
+                {item.techstack.map((techstack, techIndex) => (
+                  <Badge key={techIndex} variant="outline">
+                    {techstack}
+                  </Badge>
+                ))}
+              </div>
+              <div className="border-t pt-4 flex justify-center">
+                <MorphingDialogTrigger>
+                  <Button size="sm" variant="default" className="py-2 hover:bg-accent-foreground">
+                    View details
+                  </Button>
+                </MorphingDialogTrigger>
+              </div>
+            </CardContent>
+          </Card>
 
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative w-[min(92vw,820px)] rounded-2xl border bg-background shadow-2xl">
@@ -186,7 +220,8 @@ function DetailDialogCard({ item }: { item: SectionItem }) {
         </MorphingDialogContent>
       </MorphingDialogContainer>
       </Tilt>
-    </MorphingDialog>
+      </MorphingDialog>
+    </motion.div>
   );
 }
 
@@ -202,12 +237,15 @@ export function ProjectSection() {
           viewOptions={{ margin: '0px 0px -200px 0px' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-                <h1 className="text-center text-4xl font-bold lg:text-5xl">Projects</h1>
+            <GradientText colors={["#5227FF","#9d659d", "#1b1235"]} animationSpeed={8.5} showBorder={false}
+            className="custom-class text-center text-6xl font-extrabold lg:text-5xl" style={{ textShadow: "0 0 14px var(--ring)" }}>
+                Projects
+            </GradientText>
                 <p className="mt-4 text-center">Projects that are built during college. </p>
 
-          <div className="pt-10 grid gap-10 md:grid-cols-2 animate-fade-right animate-once animate-delay-[3ms]">
-            {projects.map((item) => (
-              <DetailDialogCard key={item.id} item={item} />
+          <div className="pt-10 grid gap-10 md:grid-cols-2">
+            {projects.map((item, index) => (
+              <DetailDialogCard key={item.id} item={item} index={index} />
             ))}
           </div>
         </InView>
@@ -221,10 +259,18 @@ export function ProjectSection() {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <div className="pt-15 space-y-8">
-            <h2 className="text-center text-4xl font-bold lg:text-5xl">Leadership</h2>
+            <GradientText
+              colors={["#5227FF", "#9d659d", "#1b1235"]}
+              animationSpeed={8.5}
+              showBorder={false}
+              className="custom-class text-center text-6xl font-extrabold lg:text-5xl"
+              style={{ textShadow: "0 0 14px var(--ring)" }}
+            >
+                Leadership
+            </GradientText>
             <div className="pt-10 grid gap-10 md:grid-cols-2">
-              {leadership.map((item) => (
-                <DetailDialogCard key={item.id} item={item} />
+              {leadership.map((item, index) => (
+                <DetailDialogCard key={item.id} item={item} index={index} />
               ))}
             </div>
           </div>
