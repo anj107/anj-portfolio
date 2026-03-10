@@ -19,7 +19,7 @@ export default function ContactSection() {
                   >
 
             <div className="@container mx-auto max-w-5xl px-6 " >
-               <GradientText colors={["#5227FF","#9d659d", "#1b1235"]} animationSpeed={8.5} showBorder={false}className="custom-class text-center text-6xl font-extrabold lg:text-5xl">
+               <GradientText animationSpeed={8.5} showBorder={false} className="custom-class text-center text-6xl font-extrabold lg:text-5xl">
                 Contact Me
                 </GradientText>
                 <p className="mt-4 text-center">Let us get to know each other.<br/>Collaborations, project queries, or opportunities are all welcome.</p>

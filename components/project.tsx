@@ -237,7 +237,7 @@ export function ProjectSection() {
           viewOptions={{ margin: '0px 0px -200px 0px' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-            <GradientText colors={["#5227FF","#9d659d", "#1b1235"]} animationSpeed={8.5} showBorder={false}
+            <GradientText animationSpeed={8.5} showBorder={false}
             className="custom-class text-center text-6xl font-extrabold lg:text-5xl" style={{ textShadow: "0 0 14px var(--ring)" }}>
                 Projects
             </GradientText>
@@ -260,7 +260,6 @@ export function ProjectSection() {
         >
           <div className="pt-15 space-y-8">
             <GradientText
-              colors={["#5227FF", "#9d659d", "#1b1235"]}
               animationSpeed={8.5}
               showBorder={false}
               className="custom-class text-center text-6xl font-extrabold lg:text-5xl"
