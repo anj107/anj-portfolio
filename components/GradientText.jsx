@@ -6,7 +6,7 @@ import { motion, useMotionValue, useAnimationFrame, useTransform } from 'motion/
 export default function GradientText({
   children,
   className = '',
-  colors,
+  colors = undefined,
   style = {},
   animationSpeed = 8,
   showBorder = false,
