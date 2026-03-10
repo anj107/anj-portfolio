@@ -1,6 +1,7 @@
-import {Timeline,TimelineItem,TimelineTitle,TimelineDescription,TimelineTime,TimelineHeader,} from '@/components/timeline';
+import { Timeline, TimelineItem, TimelineHeader, TimelineTime, TimelineTitle, TimelineDescription, TimelineContent, TimelineLogo } from '@/components/ui/timeline';
 import {CalendarDays} from 'lucide-react'
 import { InView } from '@/components/ui/in-view';
+import Image from 'next/image';
 
 const timelineData = [
   {
@@ -9,6 +10,7 @@ const timelineData = [
     description:
       <p>Bachelor of Science in Information Technology<br/>President's Lister (2022-Present)</p>,
     time: '2022 – Present',
+    src: '/Me/pup.svg',
   },
   {
     id: 2,
@@ -16,18 +18,20 @@ const timelineData = [
     description:
       <p>STEM - Senior High School<br/>With High Honors</p>,
     time: '2020 – 2022',
+    src: '/Me/nehs.png',
   },
   {
     id: 3,
     title: 'NUEVA ECIJA HIGH SCHOOL',
     description: <p>Junior High School<br/>With Honors</p>,
     time: '2016 – 2020',
+    src: '/Me/nehs.png',
   },
 ];
 
 export default function EducationSection() {
     return (
-        <section id="about" className="scroll-mt-24 border-t py-12 md:py-20 sm:py-24">
+        <section id="about" className="scroll-mt-24 py-12 md:py-20 sm:py-24">
             <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
               <div>
                   <InView
@@ -44,7 +48,7 @@ export default function EducationSection() {
                   </div>
                   </InView>
               </div>
-            <div className="relative z-10 max-w-2xl mx-auto">
+            <div className="relative z-10 mx-auto w-full max-w-4xl">
                 <InView
                   variants={{
                     hidden: { opacity: 0, y: 100, filter: 'blur(4px)' },
@@ -55,15 +59,28 @@ export default function EducationSection() {
                 >
                   <h2 className="text-center text-4xl font-bold lg:text-5xl">Education</h2>
                   <div className="justify-center">
-                    <Timeline className="mt-3 w-full max-w-4xl py-8">
+                    <Timeline className="mt-6 w-full max-w-4xl py-6">
                       {timelineData.map((item) => (
-                        <TimelineItem key={item.id} className="pb-20 last:pb-0">
+                        <TimelineItem key={item.id} className="pb-12 md:pb-14 last:pb-0">
                           <TimelineHeader>
                             <TimelineTime><CalendarDays />{item.time}</TimelineTime>
                             <TimelineTitle>{item.title}</TimelineTitle>
                           </TimelineHeader>
                           {item.description && (
-                            <TimelineDescription>{item.description}</TimelineDescription>
+                            <TimelineDescription>
+                              <TimelineContent>
+                                <div className="space-y-1 text-sm leading-relaxed text-muted-foreground md:text-base">{item.description}</div>
+                                <TimelineLogo>
+                                  <Image
+                                    src={item.src}
+                                    alt={item.title}
+                                    width={64}
+                                    height={64}
+                                    className="h-20 w-auto object-contain rounded-full"
+                                  />
+                                </TimelineLogo>
+                              </TimelineContent>
+                            </TimelineDescription>
                           )}
                         </TimelineItem>
                       ))}

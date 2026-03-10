@@ -20,7 +20,7 @@ export default function HeroHeader() {
             <header>
                 <nav
                     data-state={menuState && 'active'}
-                    className="fixed z-20 w-full border-b border-2  bg-white backdrop-blur md:relative dark:bg-zinc-950/50 lg:dark:bg-transparent">
+                    className="fixed z-50 w-full border-b border-2  bg-white backdrop-blur md:relative dark:bg-zinc-950/50 lg:dark:bg-background/90">
                     <div className="m-auto max-w-5xl px-0">
                         <div className="flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                             <div className="flex w-full justify-between lg:w-auto">

@@ -120,7 +120,7 @@ function DetailDialogCard({ item }: { item: SectionItem }) {
     <MorphingDialog>
       <Tilt rotationFactor={8} isRevese>
 
-      <Card className="h-full flex flex-col overflow-hidden hover-accent hover:shadow-lg transition-shadow pt-6">
+      <Card className="h-full flex flex-col overflow-hidden hover-accent hover:shadow-lg transition-shadow pt-6 ">
         <MorphingDialogImage
           src={item.coverImage}
           alt={item.title}
@@ -146,7 +146,7 @@ function DetailDialogCard({ item }: { item: SectionItem }) {
           </div>
           <div className="border-t pt-4 flex justify-center">
             <MorphingDialogTrigger>
-              <Button size="sm" variant="default" className="py-2">
+              <Button size="sm" variant="default" className="py-2 hover:bg-accent-foreground">
                 View details
               </Button>
             </MorphingDialogTrigger>
@@ -192,7 +192,7 @@ function DetailDialogCard({ item }: { item: SectionItem }) {
 
 export function ProjectSection() {
   return (
-    <section id="projects" className="scroll-mt-24 border-t py-12 md:py-20 sm:py-24">
+    <section id="projects" className="scroll-mt-24 py-12 md:py-20 sm:py-24">
       <div className="@container mx-auto max-w-5xl px-6 ">
         <InView
           variants={{

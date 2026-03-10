@@ -47,16 +47,16 @@ export default function HeroSection() {
                                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                                 viewport={{ once: true, margin: '0px 0px -120px 0px' }}
                                 transition={{ duration: 0.6, ease: 'easeOut' }}
-                                className="lg:w-120 @max-lg:-translate-x-20 max-lg:size-120 max-lg:order-first max-lg:mx-auto max-lg:-mb-20 lg:absolute lg:top-[-100px] lg:right-2"
+                                className="order-first mx-auto mb-8 w-[min(72vw,18rem)] sm:w-[min(62vw,20rem)] md:w-[min(48vw,22rem)] lg:absolute lg:right-2 lg:top-[-100px] lg:mb-0 lg:w-[26rem] xl:w-[30rem]"
                             >
-                                <div className="overflow-hidden rounded-full  shadow-lg mask-x-from-90% mask-x-to-100%">
+                                <div className="overflow-hidden rounded-full border-2 border-primary shadow-lg">
                                     <Image
                                         className="aspect-square w-full object-cover"
                                         src="/Me/profile.JPG"
                                         alt="My profile picture"
-                                        width={200}
-                                        height={200}
-                                        sizes="(max-width: 200px) 80vw, 40vw"
+                                        width={900}
+                                        height={900}
+                                        sizes="(max-width: 640px) 72vw, (max-width: 1024px) 48vw, 30rem"
                                         priority
                                     />
                                 </div>
