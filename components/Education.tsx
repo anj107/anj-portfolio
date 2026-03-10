@@ -1,11 +1,4 @@
-import {
-  Timeline,
-  TimelineItem,
-  TimelineTitle,
-  TimelineDescription,
-  TimelineTime,
-  TimelineHeader,
-} from '@/components/timeline';
+import {Timeline,TimelineItem,TimelineTitle,TimelineDescription,TimelineTime,TimelineHeader,} from '@/components/timeline';
 import {CalendarDays} from 'lucide-react'
 import { InView } from '@/components/ui/in-view';
 
@@ -32,7 +25,7 @@ const timelineData = [
   },
 ];
 
-export default function Education() {
+export default function EducationSection() {
     return (
         <section id="about" className="scroll-mt-24 border-t py-12 md:py-20 sm:py-24">
             <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">

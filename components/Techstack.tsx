@@ -3,11 +3,6 @@ import { InfiniteSlider } from '@/components/motion-primitives/infinite-slider'
 import { ProgressiveBlur } from '@/components/motion-primitives/progressive-blur'
 import { InView } from '@/components/ui/in-view';
 import Image from 'next/image';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 const techLogos = [
   { name: 'Python', src: '/Techstack/python.png', width: 160, height: 80 },
@@ -20,7 +15,7 @@ const techLogos = [
   { name: 'React', src: '/Techstack/react.png', width: 160, height: 80 },
 ];
 
-export default function TechLogo() {
+export default function TechLogoSection() {
     return (
         <InView
             variants={{

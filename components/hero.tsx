@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import HeroHeader from "@/components/header";
-import Socials from "@/components/Socials";
+import Socials from "@/components/socialmedia";
 import { TextEffect } from '@/components/motion-primitives/text-effect';
 import {Send, Eye} from 'lucide-react';
 import { motion } from 'motion/react';

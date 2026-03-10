@@ -1,16 +1,16 @@
-import Education from "@/components/Education";
 import HeroSection from "@/components/hero";
-import TechLogo from "@/components/Techstack";
-import { ProjectSection } from "@/components/Project-section";
+import { ProjectSection } from "@/components/project";
 import ContactSection from "@/components/contact";
 import FooterSection from "@/components/footer";
+import TechLogoSection from "@/components/Techstack";
+import EducationSection from "@/components/Education";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
-      <TechLogo/>
-      <Education />
+      <TechLogoSection/>
+      <EducationSection />
       <ProjectSection/>
       <ContactSection/>
       <FooterSection/>
