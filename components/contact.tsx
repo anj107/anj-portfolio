@@ -1,12 +1,73 @@
 
-import { Card, CardContent, CardHeader,CardDecorator } from '@/components/ui/card'
+"use client";
+
+import { useEffect, useMemo, useState } from 'react';
+import { Card, CardHeader,CardDecorator } from '@/components/ui/card'
 import { Mail, Facebook, Github, Linkedin, Phone } from 'lucide-react'
-import { ReactNode } from 'react'
 import { InView } from './ui/in-view'
 import GradientText from '@/components/GradientText';
 
+type ContactInfo = {
+    email: string | null;
+    phone: string | null;
+};
+
+type SocialLink = {
+    id: string;
+    platform: string | null;
+    url: string | null;
+};
+
 
 export default function ContactSection() {
+        const [contact, setContact] = useState<ContactInfo | null>(null);
+        const [socials, setSocials] = useState<SocialLink[]>([]);
+
+        useEffect(() => {
+            const controller = new AbortController();
+
+            async function loadContact() {
+                try {
+                    const [contactRes, socialsRes] = await Promise.all([
+                        fetch('/api/contact', { signal: controller.signal }),
+                        fetch('/api/socials', { signal: controller.signal }),
+                    ]);
+
+                    if (contactRes.ok) {
+                        const contactData: ContactInfo | null = await contactRes.json();
+                        setContact(contactData);
+                    }
+
+                    if (socialsRes.ok) {
+                        const socialData: SocialLink[] = await socialsRes.json();
+                        setSocials(socialData);
+                    }
+                } catch {
+                }
+            }
+
+            loadContact();
+            return () => controller.abort();
+        }, []);
+
+        const socialMap = useMemo(() => {
+            const map = new Map<string, string>();
+            for (const social of socials) {
+                if (!social.platform || !social.url) {
+                    continue;
+                }
+
+                map.set(social.platform.toLowerCase(), social.url);
+            }
+            return map;
+        }, [socials]);
+
+        const email = contact?.email ?? 'angelivaldezrivera@gmail.com';
+        const phone = contact?.phone ?? '0928 594 5800';
+        const linkedin = socialMap.get('linkedin') ?? '#';
+        const facebook = socialMap.get('facebook') ?? '#';
+        const github = socialMap.get('github') ?? '#';
+
     return (
         <section id="contact" className="scroll-mt-24 py-12 md:py-10 sm:py-24">
         <InView
@@ -36,7 +97,7 @@ export default function ContactSection() {
 
                         <h3 className="mt-0 font-medium">
                             <p className='hover:text-primary'>
-                                angelivaldezrivera@gmail.com
+                                {email}
                             </p>
                         </h3>
                     </CardHeader>
@@ -54,7 +115,7 @@ export default function ContactSection() {
 
                         <h3 className="mt-0 font-medium">
                             <p className='hover:text-primary'>
-                                0928 594 5800
+                                {phone}
                             </p>
                         </h3>
                     </CardHeader>
@@ -72,7 +133,7 @@ export default function ContactSection() {
                         </CardDecorator>
 
                         <h3 className="mt-0 font-medium">
-                            <a href="https://www.linkedin.com/in/angeli-rivera-171930" target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
+                            <a href={linkedin} target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
                                 LinkedIn
                             </a>
                         </h3>
@@ -89,7 +150,7 @@ export default function ContactSection() {
                         </CardDecorator>
 
                         <h3 className="mt-0 font-medium">
-                            <a href="https://www.facebook.com/angeli.rivera.171930" target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
+                            <a href={facebook} target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
                                 Facebook
                             </a>
                         </h3>
@@ -105,7 +166,7 @@ export default function ContactSection() {
                             />
                         </CardDecorator>
                         <h3 className="mt-0 font-medium">
-                            <a href="https://github.com/anj107" target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
+                            <a href={github} target="_blank" rel="noopener noreferrer" className='hover:text-primary'>
                                 Github
                             </a>
                         </h3>

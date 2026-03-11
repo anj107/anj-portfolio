@@ -1,26 +1,69 @@
+"use client";
+
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link'
 import { Github, Facebook, Linkedin } from 'lucide-react';
 
-const socialLinks = [
-
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/angeli-rivera/', icon: (
-    <Linkedin />
-  )},
-  { name: 'Facebook', href: 'https://www.facebook.com/angeli.rivera.171930', icon: (
-    <Facebook />
-  )},
-  
-  { name: 'Github', href: 'https://github.com/anj107', icon: (
-    <Github />
-  )},
-]
+type SocialLink = {
+  id: string;
+  platform: string | null;
+  url: string | null;
+};
 
 export default function Socials() {
+  const [socials, setSocials] = useState<SocialLink[]>([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadSocials() {
+      try {
+        const res = await fetch('/api/socials', { signal: controller.signal });
+        if (!res.ok) {
+          return;
+        }
+
+        const data: SocialLink[] = await res.json();
+        setSocials(data);
+      } catch {
+      }
+    }
+
+    loadSocials();
+    return () => controller.abort();
+  }, []);
+
+  const socialLinks = useMemo(
+    () =>
+      socials
+        .filter((item) => item.platform && item.url)
+        .map((item) => {
+          const name = item.platform as string;
+          const lower = name.toLowerCase();
+
+          if (lower === 'linkedin') {
+            return { key: item.id, name, href: item.url as string, icon: <Linkedin /> };
+          }
+
+          if (lower === 'facebook') {
+            return { key: item.id, name, href: item.url as string, icon: <Facebook /> };
+          }
+
+          if (lower === 'github') {
+            return { key: item.id, name, href: item.url as string, icon: <Github /> };
+          }
+
+          return null;
+        })
+        .filter((item) => item !== null),
+    [socials]
+  );
+
   return (
     <div className="flex items-center gap-4 py-4">
       {socialLinks.map((item) => (
         <Link
-          key={item.name}
+          key={item.key}
           href={item.href}
           target="_blank"
           rel="noopener noreferrer"

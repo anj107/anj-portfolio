@@ -1,37 +1,44 @@
+"use client";
+
+import { useEffect, useState } from 'react';
 import { Timeline, TimelineItem, TimelineHeader, TimelineTime, TimelineTitle, TimelineDescription, TimelineContent } from '@/components/ui/timeline';
 import {CalendarDays} from 'lucide-react'
 import { InView } from '@/components/ui/in-view';
 import Image from 'next/image';
 import GradientText from '@/components/GradientText';
 
-
-const timelineData = [
-  {
-    id: 1,
-    title: 'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
-    description:
-      <p>Bachelor of Science in Information Technology<br/>President's Lister (2022-Present)</p>,
-    time: '2022 – Present',
-    src: '/Me/pup.svg',
-  },
-  {
-    id: 2,
-    title: 'NUEVA ECIJA HIGH SCHOOL - SENIOR HIGH SCHOOL',
-    description:
-      <p>STEM - Senior High School<br/>With High Honors</p>,
-    time: '2020 – 2022',
-    src: '/Me/nehs.png',
-  },
-  {
-    id: 3,
-    title: 'NUEVA ECIJA HIGH SCHOOL',
-    description: <p>Junior High School<br/>With Honors</p>,
-    time: '2016 – 2020',
-    src: '/Me/nehs.png',
-  },
-];
+type EducationItem = {
+  id: string;
+  title: string | null;
+  school: string | null;
+  description: string | null;
+  time: string | null;
+  logo: string | null;
+};
 
 export default function EducationSection() {
+    const [timelineData, setTimelineData] = useState<EducationItem[]>([]);
+
+    useEffect(() => {
+      const controller = new AbortController();
+
+      async function loadEducation() {
+        try {
+          const res = await fetch('/api/education', { signal: controller.signal });
+          if (!res.ok) {
+            return;
+          }
+
+          const data: EducationItem[] = await res.json();
+          setTimelineData(data);
+        } catch {
+        }
+      }
+
+      loadEducation();
+      return () => controller.abort();
+    }, []);
+
     return (
         <section id="about" className="scroll-mt-24 py-12 md:py-20 sm:py-24">
             <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
@@ -48,7 +55,8 @@ export default function EducationSection() {
                         <GradientText animationSpeed={8.5} showBorder={false} className="text-center text-4xl font-extrabold lg:text-5xl" style={{ textShadow: "0 0 14px var(--ring)" }}>
                           About Me
                       </GradientText>
-                      <p className="text-sm text-xl border-l-4 pl-5 py-6 text-justify">Hi, I am <strong>Angeli V. Rivera</strong>! A 21-year-old from Nueva Ecija, Cabanatuan City, I'm currently a 4th-year Information Technology student at PUP, living in Sta. Mesa. With hands-on experience in project coordination and team leadership within academic IT projects. I have proven ability to manage timelines, ensure system quality, and communicate effectively across teams. My days are filled with coding and learning, but I always make time for my hobbies – listening to music. gaming, and talking to people online. I'm excited to see what the future holds and ready for new challenges!</p>
+                      <p className="text-sm text-xl border-l-4 pl-5 py-6 text-justify">Hi, I am <strong>Angeli V. Rivera</strong>! A 21-year-old from Nueva Ecija, Cabanatuan City, I&apos;m currently a 4th-year Information Technology student at PUP, living in Sta. Mesa.</p> 
+                      <p className="text-sm text-xl border-l-4 pl-5 py-6 text-justify"> With hands-on experience in project coordination and team leadership within academic IT projects. I have proven ability to manage timelines, ensure system quality, and communicate effectively across teams. My days are filled with coding and learning, but I always make time for my hobbies - listening to music. gaming, and talking to people online. I&apos;m excited to see what the future holds and ready for new challenges!</p>
                   </div>
                   </InView>
               </div>
@@ -69,16 +77,16 @@ export default function EducationSection() {
                         <TimelineItem key={item.id} className="pb-12 md:pb-14 last:pb-0">
                           <TimelineHeader>
                             <TimelineTime><CalendarDays />{item.time}</TimelineTime>
-                            <TimelineTitle>{item.title}</TimelineTitle>
+                            <TimelineTitle>{item.title ?? item.school ?? 'Education'}</TimelineTitle>
                           </TimelineHeader>
                           {item.description && (
                             <TimelineDescription>
                               <TimelineContent>
-                                <div className="space-y-1 text-sm leading-relaxed text-muted-foreground md:text-base">{item.description}</div>
+                                <div className="space-y-1 whitespace-pre-line text-sm leading-relaxed text-muted-foreground md:text-base">{item.description}</div>
                                 <div className="h-20 w-20 shrink-0 items-center justify-center rounded-xl shadow-sm md:flex">
                                   <Image
-                                    src={item.src}
-                                    alt={item.title}
+                                    src={item.logo ?? '/Me/profile.JPG'}
+                                    alt={item.title ?? 'Education logo'}
                                     width={64}
                                     height={64}
                                     className="h-20 w-auto object-contain rounded-full"

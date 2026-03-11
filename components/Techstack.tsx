@@ -1,4 +1,7 @@
 
+"use client";
+
+import { useEffect, useState } from 'react';
 import { InfiniteSlider } from '@/components/motion-primitives/infinite-slider'
 import { ProgressiveBlur } from '@/components/motion-primitives/progressive-blur'
 import { InView } from '@/components/ui/in-view';
@@ -6,18 +9,37 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import Image from 'next/image';
 import GradientText from '@/components/GradientText';
 
-const techLogos = [
-  { name: 'Python', src: '/Techstack/python.png', width: 160, height: 80 },
-  { name: 'C#', src: '/Techstack/c-sharp.png', width: 160, height: 80 },
-  { name: 'CSS', src: '/Techstack/css-3.png', width: 160, height: 80 },
-  { name: 'HTML', src: '/Techstack/html-5.png', width: 160, height: 80 },
-  { name: 'MySQL', src: '/Techstack/mysql.png', width: 160, height: 80 },
-  { name: 'PostgreSQL', src: '/Techstack/postgre.png', width: 160, height: 80 },
-  { name: 'Github', src: '/Techstack/github.png', width: 160, height: 80 },
-  { name: 'React', src: '/Techstack/react.png', width: 160, height: 80 },
-];
+type TechItem = {
+    id: string;
+    name: string | null;
+    image: string | null;
+    width: number | null;
+    height: number | null;
+};
 
 export default function TechLogoSection() {
+        const [techLogos, setTechLogos] = useState<TechItem[]>([]);
+
+        useEffect(() => {
+            const controller = new AbortController();
+
+            async function loadTechStack() {
+                try {
+                    const res = await fetch('/api/techstack', { signal: controller.signal });
+                    if (!res.ok) {
+                        return;
+                    }
+
+                    const data: TechItem[] = await res.json();
+                    setTechLogos(data);
+                } catch {
+                }
+            }
+
+            loadTechStack();
+            return () => controller.abort();
+        }, []);
+
     return (
         <InView
             variants={{
@@ -40,20 +62,20 @@ export default function TechLogoSection() {
                             <TooltipProvider>
                                 <InfiniteSlider speedOnHover={20} speed={40} gap={75}>
                                     {techLogos.map((logo) => (
-                                        <Tooltip key={logo.name}>
+                                        <Tooltip key={logo.id}>
                                             <TooltipTrigger asChild>
                                                 <div className="mx-1 flex h-30 items-center justify-center rounded-md px-2 py-2 shadow-lg shadow-zinc-300/20 duration-300 hover:shadow-zinc-300/40 dark:shadow-none dark:hover:shadow-zinc-300/20">
                                                     <Image
-                                                        src={logo.src}
-                                                        alt={logo.name}
-                                                        width={logo.width}
-                                                        height={logo.height}
+                                                        src={logo.image ?? '/Me/profile.JPG'}
+                                                        alt={logo.name ?? 'Tech stack'}
+                                                        width={logo.width ?? 160}
+                                                        height={logo.height ?? 80}
                                                         className="h-25 w-auto object-contain sm:h-16 md:h-20"
                                                     />
                                                 </div>
                                             </TooltipTrigger>
                                             <TooltipContent>
-                                                <p>{logo.name}</p>
+                                                <p>{logo.name ?? 'Technology'}</p>
                                             </TooltipContent>
                                         </Tooltip>
                                     ))}

@@ -33,9 +33,10 @@ export default function HeroSection() {
                                         asChild
                                         size="lg"
                                         className="px-5 text-base">
-                                        <Link href="/Me/RIVERA_CV.pdf" target="_blank" rel="noopener noreferrer">
-                                            <span className="text-nowrap">View Resume</span><Eye className="size-5"/>
-                                        </Link>
+                                        <a href="/Me/RIVERA_CV.pdf" target="_blank" rel="noopener noreferrer">
+                                        <span className="text-nowrap">View Resume</span>
+                                        <Eye className="size-5" />
+                                        </a>
                                     </Button>
                                     <div className= "pl-4 mt-2 flex flex-col items-center justify-center sm:flex-row lg:justify-start animate-in fade-in slide-in-from-bottom-2 duration-700 ease-out"><Socials/></div>
                                 </div>
